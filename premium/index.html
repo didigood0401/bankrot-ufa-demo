@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Чистый лист Private — банкротство физических лиц (премиум-демо)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f0e;--bg2:#141715;--bg3:#1b1f1c;--ivory:#efe9dc;--ivory2:#d9d1c1;--mut:#aaa598;--gold:#c8a96a;--gold2:#e6cf9c;--line:rgba(239,233,220,.12);--line2:rgba(200,169,106,.35);--ok:#8fb59a;--no:#c98a76}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-variant-numeric:lining-nums;background:var(--bg);color:var(--ivory);font:16px/1.65 Manrope,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.serif{font-family:Cormorant,Georgia,serif}
+*{font-feature-settings:"lnum" 1}
+h1,h2,h3{font-family:Cormorant,Georgia,serif;font-weight:600;letter-spacing:-.01em;line-height:1.02}
+h2{font-size:clamp(40px,5.2vw,76px)}
+h2 em,h1 em{font-style:italic;color:var(--gold2);font-weight:500}
+.ey{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.ey::before{content:"";width:36px;height:1px;background:var(--gold)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;padding:18px 30px;border-radius:2px;font:600 13px Manrope;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border:1px solid var(--gold);overflow:hidden;isolation:isolate;transition:color .45s cubic-bezier(.2,.8,.2,1)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--gold);z-index:-1;transform:scaleX(0);transform-origin:right;transition:transform .55s cubic-bezier(.7,0,.2,1)}
+.btn:hover::before{transform:scaleX(1);transform-origin:left}
+.btn:hover{color:var(--bg)}
+.btn.fill{background:var(--gold);color:var(--bg)}
+.btn.fill::before{background:var(--ivory)}
+.btn:active{transform:scale(.98)}
+section{padding:140px 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.prog{position:fixed;left:0;top:0;height:2px;background:var(--gold);z-index:70;width:0}
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:60;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+header.s{background:rgba(13,15,14,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.hd{display:flex;align-items:center;gap:34px;height:84px}
+.logo{display:flex;align-items:baseline;gap:10px;white-space:nowrap;font-family:Cormorant;font-size:26px;font-weight:600}
+.logo b{font:600 10px Manrope;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;border:1px solid var(--line2);padding:4px 8px 3px}
+header nav{display:flex;gap:30px;margin-left:auto;font-size:13px;letter-spacing:.06em;color:var(--ivory2)}
+header nav a{position:relative}
+header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .4s}
+header nav a:hover::after{transform:scaleX(1)}
+.hph{font-size:14px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 110px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 700px at 78% 40%,rgba(200,169,106,.13),transparent 65%),radial-gradient(600px 500px at 10% 100%,rgba(143,181,154,.06),transparent 70%)}
+.hgrid{position:relative;display:grid;grid-template-columns:1.4fr .6fr;gap:60px;align-items:center;width:100%}
+.hero h1{font-size:clamp(46px,6.2vw,100px);margin:26px 0 30px;font-weight:500}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln span{display:block;transform:translateY(110%);animation:rise 1.2s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2) span{animation-delay:.12s}.hero h1 .ln:nth-child(3) span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.hero .lead{font-size:18px;color:var(--ivory2);max-width:540px;opacity:0;animation:fade 1.2s .7s forwards}
+.hero .acts{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;opacity:0;animation:fade 1.2s .9s forwards}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hmeta{display:flex;gap:48px;margin-top:70px;padding-top:30px;border-top:1px solid var(--line);opacity:0;animation:fade 1.2s 1.1s forwards;flex-wrap:wrap}
+.hmeta div b{display:block;font:500 46px/1 Cormorant;color:var(--gold2)}
+.hmeta div span{font-size:13px;color:var(--mut);letter-spacing:.02em}
+/* seal */
+.seal{position:relative;justify-self:center;width:min(400px,100%);aspect-ratio:1}
+.seal svg{width:100%;height:100%;overflow:visible}
+.seal .ring{transform-origin:200px 200px;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal .draw{stroke-dasharray:1260;stroke-dashoffset:1260;animation:draw 2.4s .4s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.seal .zero{opacity:0;animation:fade 1.4s 1.6s forwards}
+/* marquee */
+.mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0;background:var(--bg2)}
+.mq div{display:flex;gap:60px;width:max-content;animation:mq 46s linear infinite;font:italic 500 30px Cormorant;color:var(--ivory2);white-space:nowrap}
+.mq div span::after{content:"✦";font-style:normal;color:var(--gold);font-size:16px;margin-left:60px;vertical-align:4px}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* principles */
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+.sh p{color:var(--ivory2);max-width:470px;justify-self:end}
+.pr{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.pr div{padding:40px 30px 10px 0;border-right:1px solid var(--line);margin-right:30px}
+.pr div:last-child{border:0;margin:0}
+.pr .n{font:italic 500 54px/1 Cormorant;color:var(--gold)}
+.pr h3{font-size:28px;margin:26px 0 14px}
+.pr p{color:var(--mut);font-size:15px}
+/* debts */
+.dt{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line)}
+.dc{background:var(--bg);padding:50px}
+.dc h3{font-size:38px;margin-bottom:30px;display:flex;align-items:center;gap:16px}
+.dc h3 i{font-style:normal;font:600 12px Manrope;letter-spacing:.2em;padding:6px 10px;border:1px solid}
+.dc.ok h3 i{color:var(--ok)}.dc.no h3 i{color:var(--no)}
+.dc ul{list-style:none}
+.dc li{display:grid;grid-template-columns:1fr auto;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);transition:padding .4s}
+.dc li:hover{padding-left:10px}
+.dc li b{font-weight:600}
+.dc li span{color:var(--mut);font-size:14px;display:block}
+.dc li em{font-style:normal;font-size:12px;letter-spacing:.14em;color:var(--mut);align-self:center;text-transform:uppercase}
+/* process sticky */
+.proc{background:var(--bg2)}
+.pgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px}
+.psticky{position:sticky;top:130px;align-self:start}
+.psticky p{color:var(--ivory2);margin-top:26px;max-width:420px}
+.pnow{margin-top:44px;font:italic 500 120px/1 Cormorant;color:var(--gold);transition:opacity .3s}
+.pnow small{display:block;font:600 12px Manrope;letter-spacing:.24em;color:var(--mut);text-transform:uppercase;margin-top:10px}
+.plist{position:relative;padding-left:46px}
+.plist::before{content:"";position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--line)}
+.pline{position:absolute;left:6px;top:0;width:1px;background:var(--gold);height:0}
+.ps{position:relative;padding:0 0 90px}
+.ps:last-child{padding-bottom:0}
+.ps::before{content:"";position:absolute;left:-46px;top:12px;width:13px;height:13px;border-radius:50%;border:1px solid var(--gold);background:var(--bg2);transition:background .4s}
+.ps.on::before{background:var(--gold)}
+.ps .t{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.ps h3{font-size:44px;margin:12px 0 14px}
+.ps p{color:var(--ivory2);max-width:520px}
+.ps ul{margin-top:18px;list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+.ps li{font-size:13px;border:1px solid var(--line);padding:6px 12px;color:var(--ivory2)}
+.mfc{margin-top:70px;border:1px solid var(--line2);padding:30px 34px;display:flex;gap:26px;align-items:center}
+.mfc b{font:italic 500 28px Cormorant;color:var(--gold2);white-space:nowrap}
+.mfc span{color:var(--ivory2);font-size:15px}
+/* calc */
+.calc{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.cin{padding:56px;display:grid;gap:44px;border-right:1px solid var(--line)}
+.cin label{display:grid;gap:16px}
+.cin label span{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--ivory2);letter-spacing:.02em}
+.cin label b{font:500 32px Cormorant;color:var(--ivory);white-space:nowrap;margin-left:14px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:1px;background:var(--line2);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--gold);box-shadow:inset 0 0 0 5px var(--gold);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--gold);border:0;cursor:pointer}
+.cout{padding:56px;background:var(--bg2);display:flex;flex-direction:column;gap:34px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.cmp small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.cmp b{display:block;font:500 54px/1 Cormorant}
+.cmp .g b{color:var(--gold2)}
+.cmp i{display:block;font-style:normal;font-size:14px;color:var(--mut);margin-top:10px}
+.bars{display:grid;gap:14px}
+.bars div{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;font-size:13px;color:var(--mut)}
+.bars s{display:block;height:6px;background:var(--line);text-decoration:none;position:relative}
+.bars s i{position:absolute;inset:0 auto 0 0;background:var(--no);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.bars s i.g{background:var(--gold)}
+.cout p{font-size:13px;color:var(--mut)}
+/* keep */
+.keep{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.kp{padding:44px 40px 44px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:70px 1fr;gap:20px}
+.kp:nth-child(odd){border-right:1px solid var(--line)}
+.kp:nth-child(even){padding-left:40px}
+.kp .n{font:italic 500 40px/1 Cormorant;color:var(--gold)}
+.kp h3{font-size:32px;margin-bottom:10px}
+.kp p{color:var(--mut);font-size:15px}
+/* quote */
+.qt{text-align:center;padding:160px 0;background:radial-gradient(700px 360px at 50% 50%,rgba(200,169,106,.1),transparent 70%)}
+.qt blockquote{font:italic 500 clamp(34px,4.6vw,64px)/1.15 Cormorant;max-width:1000px;margin:0 auto}
+.qt blockquote b{font-weight:500;color:var(--gold2)}
+.qt cite{display:block;margin-top:34px;font:600 12px Manrope;font-style:normal;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
+/* risks */
+.rk{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.rk div{border:1px solid var(--line);padding:40px 34px;position:relative;transition:border-color .4s,transform .5s cubic-bezier(.2,.8,.2,1)}
+.rk div:hover{border-color:var(--line2);transform:translateY(-6px)}
+.rk small{font-size:12px;letter-spacing:.22em;color:var(--no);text-transform:uppercase}
+.rk h3{font-size:34px;margin:18px 0 12px}
+.rk p{color:var(--mut);font-size:15px}
+.guar{margin-top:26px;background:var(--ivory);color:var(--bg);padding:44px 50px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.guar h3{font-size:40px}
+.guar p{color:#4a4741;margin-top:10px;max-width:640px}
+.guar .btn{border-color:var(--bg)}.guar .btn::before{background:var(--bg)}.guar .btn:hover{color:var(--ivory)}
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+.pc{padding:50px 40px;display:flex;flex-direction:column;gap:22px;border-right:1px solid var(--line);position:relative}
+.pc:last-child{border:0}
+.pc.hl{background:linear-gradient(180deg,rgba(200,169,106,.12),rgba(200,169,106,.02))}
+.pc.hl::before{content:"Выбирают чаще";position:absolute;top:-1px;left:40px;background:var(--gold);color:var(--bg);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:6px 12px}
+.pc h3{font-size:40px}
+.pc .pr2{font:500 26px Cormorant;color:var(--gold2)}
+.pc .pr2 small{font:500 13px Manrope;color:var(--mut)}
+.pc ul{list-style:none;display:grid;gap:12px;font-size:15px;color:var(--ivory2);flex:1}
+.pc li{padding-left:24px;position:relative}
+.pc li::before{content:"";position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--gold)}
+.pnote{margin-top:22px;font-size:13px;color:var(--mut)}
+/* cases sample */
+.cs{margin-top:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.cs div{border-top:1px solid var(--gold);padding-top:24px}
+.cs b{display:block;font:500 46px/1 Cormorant;color:var(--ivory)}
+.cs span{font-size:14px;color:var(--mut)}
+.cs em{display:block;margin-top:14px;font-style:normal;font-size:12px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+.csn{grid-column:1/-1;font-size:13px;color:var(--mut);border:1px dashed var(--line);padding:14px 18px}
+/* faq */
+.fq{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:28px 0;display:flex;justify-content:space-between;gap:30px;font:500 26px/1.2 Cormorant}
+summary::-webkit-details-marker{display:none}
+summary i{flex:none;width:30px;height:30px;border:1px solid var(--line2);border-radius:50%;position:relative;transition:transform .4s}
+summary i::before,summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1px;background:var(--gold);transform:translate(-50%,-50%)}
+summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s}
+details[open] summary i::after{transform:translate(-50%,-50%)}
+details p{color:var(--ivory2);padding:0 60px 28px 0}
+/* booking */
+.bk{background:var(--bg2)}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.bgrid>div:first-child p{color:var(--ivory2);margin-top:26px;max-width:440px}
+.bfeat{margin-top:40px;display:grid;gap:16px}
+.bfeat div{display:flex;gap:16px;align-items:center;font-size:15px;color:var(--ivory2)}
+.bfeat div::before{content:"";width:8px;height:8px;transform:rotate(45deg);border:1px solid var(--gold);flex:none}
+.form{border:1px solid var(--line2);padding:46px;background:var(--bg)}
+.form h3{font-size:34px;margin-bottom:6px}
+.form>small{color:var(--mut);font-size:14px}
+.fl{margin-top:30px;display:grid;gap:10px}
+.fl>span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:500 14px Manrope;color:var(--ivory2);background:none;border:1px solid var(--line);padding:10px 14px;cursor:pointer;transition:all .3s}
+.chips button:hover{border-color:var(--line2)}
+.chips button.on{border-color:var(--gold);color:var(--bg);background:var(--gold)}
+.form input{width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 0;font:500 18px Manrope;color:var(--ivory);outline:none;transition:border-color .3s}
+.form input:focus{border-color:var(--gold)}
+.form input::placeholder{color:#8f8b82}
+.form .btn{margin-top:34px;width:100%;justify-content:center}
+.form .ok{display:none;text-align:center;padding:60px 0}
+.form .ok b{display:block;font:italic 500 44px Cormorant;color:var(--gold2)}
+.form.done .ok{display:block}.form.done .fbody{display:none}
+.err{border-color:var(--no)!important}
+footer{border-top:1px solid var(--line);padding:56px 0;font-size:13px;color:var(--mut)}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .logo{color:var(--ivory)}
+.demo{position:fixed;right:16px;top:96px;z-index:80;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line2);background:rgba(13,15,14,.85);padding:8px 12px;backdrop-filter:blur(8px)}
+.float{position:fixed;right:22px;bottom:22px;z-index:80;opacity:0;transform:translateY(20px);transition:all .5s;pointer-events:none}
+.float.on{opacity:1;transform:none;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.rv,.hero .lead,.hero .acts,.hmeta,.seal .zero{opacity:1;transform:none}.hero h1 .ln span{transform:none}.seal .draw{stroke-dashoffset:0}}
+@media (max-width:980px){
+ header nav{display:none}.hd{justify-content:space-between;height:70px}
+ .hgrid,.sh,.pgrid,.calc,.fq,.bgrid,.guar{grid-template-columns:1fr}
+ .sh{gap:20px;margin-bottom:50px}.sh p{justify-self:start}
+ .pr{grid-template-columns:1fr 1fr}.pr div{margin-right:20px;padding-right:20px}.pr div:nth-child(2){border:0}
+ .dt,.keep,.rk,.pk,.cs{grid-template-columns:1fr}
+ .kp,.kp:nth-child(even){padding:30px 0;border-right:0}
+ .pc{border-right:0;border-bottom:1px solid var(--line)}
+ .cin{border-right:0;border-bottom:1px solid var(--line)}
+ .psticky{position:static}.pnow{display:none}
+ .seal{width:min(280px,80%)}
+ section{padding:90px 0}.qt{padding:100px 0}
+ .dc,.cin,.cout,.form,.guar{padding:34px 24px}
+ .cmp{grid-template-columns:1fr}.cmp b{font-size:40px}
+ .mfc{flex-direction:column;align-items:flex-start}
+ .hmeta{gap:28px}
+ .hph{font-size:12px}.logo{font-size:20px}.logo b{font-size:9px;padding:3px 6px 2px}
+}
+@media (max-width:560px){.pr{grid-template-columns:1fr}.pr div{border-right:0;margin:0}.wrap{padding:0 18px}.demo{display:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="prog" id="pg"></div>
+<header id="hd"><div class="wrap hd">
+ <a class="logo" href="#">Чистый лист <b>Private</b></a>
+ <nav><a href="#principles">Подход</a><a href="#process">Процедура</a><a href="#calc">Расчёт</a><a href="#packages">Форматы</a><a href="#faq">Вопросы</a></nav>
+ <a class="hph" href="#book">+7 (347) 000-00-00</a>
+</div></header>
+
+<section class="hero"><div class="wrap hgrid">
+ <div>
+  <span class="ey" style="opacity:0;animation:fade 1s .1s forwards">Банкротство граждан · Уфа · Частная практика</span>
+  <h1><span class="ln"><span>Долги закончатся.</span></span><span class="ln"><span><em>Ваша жизнь —</em></span></span><span class="ln"><span>нет.</span></span></h1>
+  <p class="lead">Персональный юрист ведёт ваше дело от первой встречи до решения суда. Конфиденциально, по этапам, с фиксированной стоимостью в договоре.</p>
+  <div class="acts"><a class="btn fill" href="#book">Записаться на встречу</a><a class="btn" href="#calc">Рассчитать выгоду</a></div>
+  <div class="hmeta"><div><b>1:1</b><span>один юрист на всё дело</span></div><div><b>0 ₽</b><span>первичный анализ</span></div><div><b>6–10</b><span>месяцев в среднем</span></div></div>
+ </div>
+ <div class="seal" aria-hidden="true">
+  <svg viewBox="0 0 400 400">
+   <defs><path id="cp" d="M200,200 m-160,0 a160,160 0 1,1 320,0 a160,160 0 1,1 -320,0"/></defs>
+   <g class="ring"><text fill="#c8a96a" font-family="Manrope" font-size="13" letter-spacing="7" font-weight="600"><textPath href="#cp">ОСВОБОЖДЕНИЕ ОТ ДОЛГОВ · 127-ФЗ · КОНФИДЕНЦИАЛЬНО · </textPath></text></g>
+   <circle class="draw" cx="200" cy="200" r="185" fill="none" stroke="#c8a96a" stroke-width="1"/>
+   <circle class="draw" cx="200" cy="200" r="132" fill="none" stroke="rgba(200,169,106,.45)" stroke-width="1" style="animation-delay:.7s"/>
+   <g class="zero"><text x="200" y="226" text-anchor="middle" fill="#efe9dc" font-family="Cormorant" font-size="104" font-weight="500" font-style="italic">0 ₽</text>
+   <text x="200" y="262" text-anchor="middle" fill="#aaa598" font-family="Manrope" font-size="11" letter-spacing="4" font-weight="600">ОСТАТОК ДОЛГА</text></g>
+  </svg>
+ </div>
+</div></section>
+
+<div class="mq" aria-hidden="true"><div>
+ <span>Звонки коллекторов прекращаются</span><span>Аресты со счетов снимаются</span><span>Проценты перестают расти</span><span>Единственное жильё остаётся с вами</span><span>Оплата — по этапам</span>
+ <span>Звонки коллекторов прекращаются</span><span>Аресты со счетов снимаются</span><span>Проценты перестают расти</span><span>Единственное жильё остаётся с вами</span><span>Оплата — по этапам</span>
+</div></div>
+
+<section id="principles"><div class="wrap">
+ <div class="sh"><div class="rv"><span class="ey">Подход</span><h2 style="margin-top:22px">Четыре правила,<br>по которым <em>мы работаем</em></h2></div><p class="rv">Банкротство — юридическая процедура, а не конвейер. Мы берём меньше дел, чтобы каждое вести лично и без спешки.</p></div>
+ <div class="pr">
+  <div class="rv"><span class="n">I</span><h3>Честность до договора</h3><p>Если банкротство вам не подходит или риск высокий — скажем на первой встрече и не возьмём оплату.</p></div>
+  <div class="rv"><span class="n">II</span><h3>Один юрист</h3><p>Вы общаетесь с одним человеком, который знает ваше дело целиком и всегда на связи.</p></div>
+  <div class="rv"><span class="n">III</span><h3>Конфиденциальность</h3><p>Встречи в закрытом кабинете или онлайн. Никаких рассылок, звонков родственникам и работодателю.</p></div>
+  <div class="rv"><span class="n">IV</span><h3>Цена не меняется</h3><p>Стоимость фиксируется в договоре и делится на этапы. Доплат «по ходу дела» нет.</p></div>
+ </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+ <div class="sh"><div class="rv"><span class="ey">Прозрачно</span><h2 style="margin-top:22px">Что спишется —<br><em>и что нет</em></h2></div><p class="rv">Говорим об этом в первые пять минут разговора. Так вы сразу понимаете, решит ли процедура вашу задачу.</p></div>
+ <div class="dt rv">
+  <div class="dc ok"><h3>Списываются <i>ДА</i></h3><ul>
+   <li><div><b>Кредиты и кредитные карты</b><span>с пенями и штрафами</span></div><em>банки</em></li>
+   <li><div><b>Микрозаймы</b><span>вместе с процентами</span></div><em>МФО</em></li>
+   <li><div><b>ЖКХ, налоги, штрафы</b><span>включая имущественный налог</span></div><em>гос.</em></li>
+   <li><div><b>Долги перед людьми</b><span>расписки, поручительства</span></div><em>частные</em></li>
+  </ul></div>
+  <div class="dc no"><h3>Остаются <i>НЕТ</i></h3><ul>
+   <li><div><b>Алименты</b><span>обязанность сохраняется</span></div><em>семья</em></li>
+   <li><div><b>Вред жизни и здоровью</b><span>и моральный вред</span></div><em>суд</em></li>
+   <li><div><b>Субсидиарная ответственность</b><span>по долгам компаний</span></div><em>бизнес</em></li>
+   <li><div><b>Долги при недобросовестности</b><span>если это установит суд</span></div><em>риск</em></li>
+  </ul></div>
+ </div>
+</div></section>
+
+<section class="proc" id="process"><div class="wrap pgrid">
+ <div class="psticky">
+  <span class="ey">Процедура</span><h2 style="margin-top:22px">Путь<br>до <em>чистого листа</em></h2>
+  <p>Каждый этап виден в картотеке арбитражных дел. Юрист сообщает о каждом шаге раньше, чем вы успеете спросить.</p>
+  <div class="pnow" id="pnow">01<small id="pnt">Анализ</small></div>
+ </div>
+ <div class="plist" id="pl"><i class="pline" id="pli"></i>
+  <div class="ps" data-t="Анализ"><span class="t">Этап 01 · 1–2 дня</span><h3>Личная встреча и анализ</h3><p>Разбираем долги, доходы, имущество и сделки за три года. Называем шансы, риски и итоговую стоимость.</p><ul><li>бесплатно</li><li>письменное заключение</li></ul></div>
+  <div class="ps" data-t="Документы"><span class="t">Этап 02 · 2–4 недели</span><h3>Документы — на нас</h3><p>Сами запрашиваем справки и выписки. Вы подписываете доверенность — и больше не стоите в очередях.</p><ul><li>запросы в банки</li><li>Росреестр, ФНС, ГИБДД</li></ul></div>
+  <div class="ps" data-t="Суд"><span class="t">Этап 03 · 1–2 месяца</span><h3>Заявление в арбитраж</h3><p>Готовим и подаём заявление в Арбитражный суд Республики Башкортостан, представляем вас на заседаниях.</p><ul><li>без вашего присутствия</li></ul></div>
+  <div class="ps" data-t="Процедура"><span class="t">Этап 04 · 4–6 месяцев</span><h3>Сопровождение процедуры</h3><p>Работаем с финансовым управляющим и кредиторами, отвечаем на требования, защищаем ваше имущество.</p><ul><li>отчёт после каждого заседания</li></ul></div>
+  <div class="ps" data-t="Свобода"><span class="t">Финал</span><h3>Освобождение от долгов</h3><p>Суд выносит определение об освобождении. Передаём документы и объясняем, как жить дальше без ограничений.</p><ul><li>консультация «после»</li></ul></div>
+  <div class="mfc rv"><b>Долг небольшой?</b><span>Возможно бесплатное внесудебное банкротство через МФЦ. Проверим условия и подготовим документы.</span></div>
+ </div>
+</div></section>
+
+<section id="calc"><div class="wrap">
+ <div class="sh"><div class="rv"><span class="ey">Расчёт</span><h2 style="margin-top:22px">Сколько стоит<br><em>продолжать платить</em></h2></div><p class="rv">Передвиньте ползунки. Расчёт ориентировочный — точные цифры юрист назовёт после анализа документов.</p></div>
+ <div class="calc rv">
+  <div class="cin">
+   <label><span>Общий долг <b id="vD"></b></span><input type="range" id="iD" min="200000" max="5000000" step="50000" value="1200000"></label>
+   <label><span>Платите в месяц <b id="vP"></b></span><input type="range" id="iP" min="5000" max="150000" step="1000" value="32000"></label>
+   <label><span>Средняя ставка <b id="vR"></b></span><input type="range" id="iR" min="10" max="60" step="1" value="26"></label>
+  </div>
+  <div class="cout">
+   <div class="cmp"><div><small>Платить дальше</small><b id="oY">—</b><i id="oO">—</i></div><div class="g"><small>Банкротство</small><b>6–10 мес.</b><i>фиксированная цена по договору</i></div></div>
+   <div class="bars"><div>Банкам отдадите<s><i id="b1"></i></s></div><div>Сумма долга<s><i class="g" id="b2"></i></s></div></div>
+   <p>Расчёт не является офертой. Стоимость процедуры зависит от количества кредиторов и имущества.</p>
+   <a class="btn fill" href="#book" style="align-self:flex-start">Получить точный расчёт</a>
+  </div>
+ </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+ <div class="sh"><div class="rv"><span class="ey">Что останется</span><h2 style="margin-top:22px">Закон защищает<br><em>вашу обычную жизнь</em></h2></div><p class="rv">До подачи заявления мы разбираем каждый объект имущества и заранее говорим, что с ним будет.</p></div>
+ <div class="keep">
+  <div class="kp rv"><span class="n">01</span><div><h3>Единственное жильё</h3><p>Если оно не в ипотеке — его не продают.</p></div></div>
+  <div class="kp rv"><span class="n">02</span><div><h3>Доход на жизнь</h3><p>Каждый месяц — прожиточный минимум на вас и детей.</p></div></div>
+  <div class="kp rv"><span class="n">03</span><div><h3>Обстановка дома</h3><p>Личные вещи и обычная бытовая техника.</p></div></div>
+  <div class="kp rv"><span class="n">04</span><div><h3>Работа и поездки</h3><p>Работать и путешествовать можно, ограничения понятные и временные.</p></div></div>
+ </div>
+</div></section>
+
+<div class="qt"><div class="wrap rv"><blockquote>«Самое тяжёлое в долгах — не сумма, а <b>ощущение, что выхода нет</b>. Наша работа — вернуть человеку план».</blockquote><cite>Принцип практики</cite></div></div>
+
+<section style="padding-top:40px"><div class="wrap">
+ <div class="sh"><div class="rv"><span class="ey">Риски</span><h2 style="margin-top:22px">Отказать могут<br>по <em>трём причинам</em></h2></div><p class="rv">Проверяем каждую до подачи заявления — в рамках финансово-правовой экспертизы.</p></div>
+ <div class="rk">
+  <div class="rv"><small>Причина 1</small><h3>Недобросовестность</h3><p>Скрытие доходов или имущества, ложные сведения кредиторам и суду.</p></div>
+  <div class="rv"><small>Причина 2</small><h3>Умысел</h3><p>Если долги набирали, заранее не планируя их возвращать.</p></div>
+  <div class="rv"><small>Причина 3</small><h3>Сделки</h3><p>Продажа или дарение имущества родственникам незадолго до процедуры.</p></div>
+ </div>
+ <div class="guar rv"><div><h3>Гарантия в договоре</h3><p>Если результат не достигнут по нашей вине — возвращаем оплату. Это условие прописано в договоре, а не обещано на словах.</p></div><a class="btn" href="#book">Проверить ситуацию</a></div>
+</div></section>
+
+<section id="packages" style="padding-top:40px"><div class="wrap">
+ <div class="sh"><div class="rv"><span class="ey">Форматы работы</span><h2 style="margin-top:22px">Выберите уровень<br><em>сопровождения</em></h2></div><p class="rv">Во всех форматах — оплата по этапам и фиксированная цена. Отличается глубина личного участия юриста.</p></div>
+ <div class="pk">
+  <div class="pc rv"><h3>Базовый</h3><div class="pr2">от 9 900 ₽ <small>/ мес.</small></div><ul><li>Анализ и заключение</li><li>Сбор документов</li><li>Подача в суд и сопровождение</li><li>Связь в мессенджере</li></ul><a class="btn" href="#book">Обсудить</a></div>
+  <div class="pc hl rv"><h3>Личный юрист</h3><div class="pr2">от 14 900 ₽ <small>/ мес.</small></div><ul><li>Всё из «Базового»</li><li>Персональный юрист на всё дело</li><li>Присутствие на всех заседаниях</li><li>Защита сделок и имущества</li><li>Ответ в течение часа</li></ul><a class="btn fill" href="#book">Обсудить</a></div>
+  <div class="pc rv"><h3>Приватный</h3><div class="pr2">по договорённости</div><ul><li>Сложные случаи: ИП, залог, сделки</li><li>Партнёр практики ведёт дело лично</li><li>Встречи в удобное время и месте</li><li>Полная конфиденциальность</li></ul><a class="btn" href="#book">Обсудить</a></div>
+ </div>
+ <p class="pnote">Цены в демо условные — в рабочей версии подставляются реальные условия.</p>
+ <div class="cs">
+  <div class="rv"><b>1,8 млн ₽</b><span>списано у клиента с ипотекой — жильё сохранено</span><em>Образец кейса</em></div>
+  <div class="rv"><b>7 мес.</b><span>от первой встречи до определения суда</span><em>Образец кейса</em></div>
+  <div class="rv"><b>14</b><span>кредиторов в одном деле — все требования закрыты</span><em>Образец кейса</em></div>
+  <p class="csn rv">Блок кейсов в демо — образец. В рабочей версии здесь реальные дела клиентов (с их согласия) со ссылками на kad.arbitr.ru.</p>
+ </div>
+</div></section>
+
+<section id="faq" style="padding-top:40px"><div class="wrap fq">
+ <div class="rv"><span class="ey">Вопросы</span><h2 style="margin-top:22px">О чём<br><em>спрашивают</em></h2></div>
+ <div class="rv">
+  <details open><summary>Спишут ли долги в итоге?<i></i></summary><p>В подавляющем большинстве дел граждане освобождаются от долгов. Отказ бывает по трём причинам из блока «Риски» — мы проверяем их до старта.</p></details>
+  <details><summary>Что будет с квартирой?<i></i></summary><p>Единственное жильё не в ипотеке не продают. Если жильё в залоге — разбираем ситуацию отдельно и предлагаем варианты сохранения.</p></details>
+  <details><summary>Узнают ли работодатель и близкие?<i></i></summary><p>Работодатель не обязан узнавать о процедуре. Мы не звоним родственникам и не делаем рассылок — общение только с вами.</p></details>
+  <details><summary>Какие ограничения после?<i></i></summary><p>5 лет сообщать о банкротстве при оформлении кредитов, 3 года не занимать руководящие должности. Жить, работать и путешествовать можно.</p></details>
+  <details><summary>Можно ли платить частями?<i></i></summary><p>Да. Стоимость фиксируется в договоре и делится на платежи по этапам — без крупной суммы на старте.</p></details>
+ </div>
+</div></section>
+
+<section class="bk" id="book"><div class="wrap bgrid">
+ <div class="rv"><span class="ey">Первая встреча</span><h2 style="margin-top:22px">Начнём<br>с <em>разговора</em></h2><p>Первая встреча бесплатна и ни к чему не обязывает. Вы уйдёте с пониманием шансов, сроков и стоимости — даже если решите не начинать.</p>
+  <div class="bfeat"><div>45 минут с юристом, лично или онлайн</div><div>Письменное заключение по вашей ситуации</div><div>Конфиденциально — без звонков близким</div></div></div>
+ <form class="form rv" id="fm" novalidate>
+  <div class="fbody">
+   <h3>Запись на встречу</h3><small>Перезвоним в течение 15 минут в рабочее время</small>
+   <div class="fl"><span>Сумма долга</span><div class="chips" data-g="sum"><button type="button">до 500 тыс.</button><button type="button">0,5–1 млн</button><button type="button">1–3 млн</button><button type="button">больше 3 млн</button></div></div>
+   <div class="fl"><span>Формат встречи</span><div class="chips" data-g="fmt"><button type="button" class="on">В офисе</button><button type="button">Онлайн</button><button type="button">Звонок</button></div></div>
+   <div class="fl"><span>Контакты</span><input id="fn" placeholder="Как к вам обращаться" autocomplete="name"><input id="ft" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel"></div>
+   <button class="btn fill" type="submit">Записаться</button>
+  </div>
+  <div class="ok"><b>Спасибо</b><p style="color:var(--ivory2);margin-top:12px">Юрист свяжется с вами в ближайшее время.<br><small style="color:var(--mut)">В демо заявка никуда не отправляется.</small></p></div>
+ </form>
+</div></section>
+
+<footer><div class="wrap"><div><a class="logo" href="#">Чистый лист <b>Private</b></a><p style="margin-top:12px">Банкротство граждан · Уфа · +7 (347) 000-00-00</p></div><div style="max-width:480px">Демо-концепция премиум-версии. Название, телефон, цены и кейсы условные. Процедура по Федеральному закону № 127-ФЗ «О несостоятельности (банкротстве)».</div></div></footer>
+<div class="demo">Демо · премиум-версия</div>
+<a class="btn fill float" id="fl" href="#book">Записаться</a>
+
+<script>
+const $=id=>document.getElementById(id);
+/* header + progress + float */
+function onS(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;$('hd').classList.toggle('s',y>40);$('pg').style.width=(y/h*100)+'%';$('fl').classList.toggle('on',y>innerHeight*.9&&y<h-900);proc()}
+addEventListener('scroll',onS,{passive:true});
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach((e,i)=>{e.style.transitionDelay=(i%4)*80+'ms';io.observe(e)});
+/* sticky process */
+const ps=[...document.querySelectorAll('.ps')],pl=$('pl');
+function proc(){const r=pl.getBoundingClientRect(),mid=innerHeight*.55;$('pli').style.height=Math.max(0,Math.min(r.height,mid-r.top))+'px';let cur=0;ps.forEach((p,i)=>{const on=p.getBoundingClientRect().top<mid;p.classList.toggle('on',on);if(on)cur=i});$('pnow').firstChild.nodeValue=String(cur+1).padStart(2,'0');$('pnt').textContent=ps[cur].dataset.t}
+/* calc */
+const fm=n=>Math.round(n).toLocaleString('ru-RU')+' ₽';
+function calc(){const D=+iD.value,P=+iP.value,R=+iR.value/1200;vD.textContent=fm(D);vP.textContent=fm(P);vR.textContent=iR.value+' %';
+ let bal=D,m=0,paid=0;while(bal>0&&m<600){bal=bal*(1+R)-P;paid+=P;m++;if(bal<0)paid+=bal}
+ if(m>=600||P<=D*R){oY.textContent='никогда';oO.textContent='платёж не покрывает проценты';b1.style.width='100%';b2.style.width='30%';return}
+ const y=Math.floor(m/12),mm=m%12;oY.textContent=y?(y+(mm>=6?',5':'')+' г.'):mm+' мес.';oO.textContent='переплата '+fm(paid-D);
+ const mx=Math.max(paid,D);b1.style.width=(paid/mx*100)+'%';b2.style.width=(D/mx*100)+'%'}
+[iD,iP,iR].forEach(i=>i.addEventListener('input',calc));calc();
+/* form */
+document.querySelectorAll('.chips').forEach(g=>g.querySelectorAll('button').forEach(b=>b.onclick=()=>g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))));
+$('fm').onsubmit=e=>{e.preventDefault();const n=$('fn'),t=$('ft');n.classList.toggle('err',!n.value.trim());t.classList.toggle('err',t.value.replace(/\D/g,'').length<10);if(!n.value.trim()){n.focus();return}if(t.classList.contains('err')){t.focus();return}$('fm').classList.add('done')};
+onS();
+</script>
+</body>
+</html>
