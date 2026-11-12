@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Чистый лист — банкротство физических лиц в Уфе (демо)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1b2d;--ink2:#17263d;--paper:#f6f2eb;--paper2:#ece5d9;--brass:#b08a4f;--brass2:#d8b98a;--txt:#1b2333;--mut:#566072;--ok:#2f7d5b;--no:#a24a3a;--line:rgba(15,27,45,.12);--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--paper);color:var(--txt);font:17px/1.6 Onest,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{letter-spacing:-.025em;line-height:1.08;font-weight:700}
+h2{font-size:clamp(32px,4vw,52px)}
+.ey{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+.ey::before{content:"";width:26px;height:1px;background:var(--brass)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:16px 28px;font:600 16px Onest;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .25s,color .25s}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:var(--brass);color:#fff}.btn.gold:hover{background:#97733d}
+.btn.line{border-color:currentColor;background:transparent}
+.btn.ink{background:var(--ink);color:#fff}.btn.ink:hover{background:var(--ink2)}
+section{padding:110px 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.sh p{max-width:460px;color:var(--mut)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+/* header */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s;color:#fff}
+header.s{background:rgba(15,27,45,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.hd{display:flex;align-items:center;gap:30px;height:74px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:19px;letter-spacing:-.01em}
+.logo i{width:30px;height:38px;border:1.5px solid var(--brass2);border-radius:3px;position:relative;display:inline-block}
+.logo i::after{content:"";position:absolute;right:-1px;top:-1px;width:10px;height:10px;background:var(--ink);border-left:1.5px solid var(--brass2);border-bottom:1.5px solid var(--brass2)}
+.logo small{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.65);letter-spacing:.04em}
+header nav{display:flex;gap:26px;font-size:15px;margin-left:auto;color:rgba(255,255,255,.82)}
+header nav a:hover{color:#fff}
+.phone{font-weight:700;white-space:nowrap}
+/* hero */
+.hero{overflow:hidden;background:radial-gradient(900px 600px at 85% 20%,rgba(176,138,79,.22),transparent 60%),linear-gradient(160deg,#0f1b2d,#132440 60%,#0d1726);color:#fff;padding:150px 0 90px;position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,5.4vw,72px);margin:18px 0 22px}
+.hero h1 em{font-style:normal;color:var(--brass2)}
+.hero .lead{font-size:19px;color:rgba(255,255,255,.8);max-width:560px}
+.hero .law{margin-top:16px;font-size:14px;color:rgba(255,255,255,.55)}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.trust{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.trust div b{display:block;font-size:34px;font-weight:700;color:var(--brass2);line-height:1}
+.trust div span{font-size:14px;color:rgba(255,255,255,.7)}
+/* sheet visual */
+.sheet{position:relative;justify-self:center;width:min(420px,100%);aspect-ratio:3/4}
+.sheet .pg{position:absolute;inset:0;background:var(--paper);border-radius:6px;box-shadow:0 40px 80px rgba(0,0,0,.4)}
+.sheet .pg.b1{transform:rotate(-6deg) translate(-18px,10px);opacity:.35}
+.sheet .pg.b2{transform:rotate(3deg) translate(10px,4px);opacity:.6}
+.sheet .pg.f{padding:34px;color:var(--txt);display:flex;flex-direction:column;gap:14px}
+.sheet .pg.f h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.sheet .row{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:8px 0;font-size:15px}
+.sheet .row s{color:var(--no)}
+.sheet .total{margin-top:auto;display:flex;justify-content:space-between;align-items:end}
+.sheet .total b{font-size:46px;line-height:1;color:var(--ok)}
+.stamp{position:absolute;right:-34px;bottom:150px;width:150px;height:150px;border:3px solid var(--brass);border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--brass);font-weight:800;font-size:15px;line-height:1.15;letter-spacing:.06em;text-transform:uppercase;transform:rotate(-14deg) scale(0);background:rgba(246,242,235,.92);animation:stamp .5s 1.6s cubic-bezier(.2,1.6,.4,1) forwards}
+.stamp::before{content:"";position:absolute;inset:8px;border:1px solid var(--brass);border-radius:50%}
+@keyframes stamp{to{transform:rotate(-14deg) scale(1)}}
+.sheet s.ani{position:relative;text-decoration:none}
+.sheet s.ani::after{content:"";position:absolute;left:0;top:50%;height:2px;width:0;background:var(--no);animation:strike .5s forwards}
+@keyframes strike{to{width:100%}}
+/* debts */
+.debts{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dcol{background:#fff;border-radius:var(--r);padding:34px;box-shadow:0 1px 0 var(--line)}
+.dcol h3{font-size:24px;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.dcol h3 i{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;color:#fff;font-size:16px}
+.dcol.ok h3 i{background:var(--ok)}.dcol.no h3 i{background:var(--no)}
+.dcol ul{list-style:none;display:grid;gap:12px}
+.dcol li{display:flex;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.dcol li:last-child{border:0;padding:0}
+.dcol li span{color:var(--mut);font-size:15px;display:block}
+/* relief */
+.relief{background:var(--ink);color:#fff}
+.relief .sh p{color:rgba(255,255,255,.7)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rc{border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,.03)}
+.rc .n{font-size:13px;letter-spacing:.14em;color:var(--brass2)}
+.rc h3{font-size:22px}
+.rc p{color:rgba(255,255,255,.72);font-size:15px}
+.note{margin-top:26px;border-left:2px solid var(--brass);padding:6px 0 6px 18px;color:rgba(255,255,255,.75);font-size:15px;max-width:820px}
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.cin,.cout{border-radius:var(--r);padding:36px}
+.cin{background:#fff;box-shadow:0 1px 0 var(--line);display:grid;gap:26px}
+.cin label{display:grid;gap:10px;font-weight:600}
+.cin label span{display:flex;justify-content:space-between;font-weight:600}
+.cin label span b{color:var(--brass);font-size:20px;white-space:nowrap;margin-left:12px}
+input[type=range]{width:100%;accent-color:var(--brass);height:6px}
+.cout{background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:22px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vs div{border-radius:14px;padding:20px;background:rgba(255,255,255,.05)}
+.vs div.good{background:rgba(47,125,91,.22);outline:1px solid rgba(47,125,91,.6)}
+.vs small{display:block;color:rgba(255,255,255,.65);font-size:13px;margin-bottom:6px}
+.vs b{font-size:30px;line-height:1.1}
+.bar{height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brass);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.cout p{color:rgba(255,255,255,.7);font-size:14px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:s}
+.st{position:relative;padding:28px 22px;background:#fff;border-radius:var(--r);box-shadow:0 1px 0 var(--line)}
+.st::before{counter-increment:s;content:"0" counter(s);font-size:40px;font-weight:700;color:var(--paper2);line-height:1;display:block;margin-bottom:12px}
+.st h3{font-size:18px;margin-bottom:8px}
+.st p{font-size:14px;color:var(--mut)}
+.st .t{display:inline-block;margin-top:12px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--brass);text-transform:uppercase}
+.mfc{margin-top:22px;display:flex;gap:16px;align-items:center;background:var(--paper2);border-radius:var(--r);padding:22px 28px;font-size:15px}
+.mfc b{white-space:nowrap}
+/* keep */
+.keep{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.klist{display:grid;gap:14px}
+.ki{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 1px 0 var(--line)}
+.ki i{flex:none;width:40px;height:40px;border-radius:12px;background:var(--paper2);display:grid;place-items:center;font-style:normal;font-size:20px}
+.ki span{color:var(--mut);font-size:15px;display:block}
+/* risks */
+.risks{background:var(--paper2)}
+.rk{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rk div{background:var(--paper);border-radius:var(--r);padding:30px;border-top:3px solid var(--no)}
+.rk h3{font-size:20px;margin:10px 0}
+.rk p{font-size:15px;color:var(--mut)}
+.rk small{font-weight:600;color:var(--no);letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.check{margin-top:26px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:var(--r);padding:28px 32px}
+.check p{max-width:700px;color:rgba(255,255,255,.8)}
+/* terms */
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tm{padding:30px;border-radius:var(--r);border:1px solid var(--line);background:#fff}
+.tm b{display:block;font-size:20px;margin-bottom:8px}
+.tm p{color:var(--mut);font-size:15px}
+.cases{margin-top:28px;border-radius:var(--r);background:#fff;padding:26px 30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;box-shadow:0 1px 0 var(--line)}
+.cases p{color:var(--mut);font-size:15px;max-width:720px}
+/* faq */
+.faq{max-width:860px}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-weight:600;font-size:19px}
+summary::after{content:"+";color:var(--brass);font-size:28px;line-height:1;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mut);margin-top:12px}
+/* quiz */
+.quiz{background:linear-gradient(160deg,#0f1b2d,#152a47);color:#fff}
+.qbox{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.qcard{background:var(--paper);color:var(--txt);border-radius:22px;padding:36px;min-height:440px;display:flex;flex-direction:column}
+.prog{height:6px;border-radius:999px;background:var(--paper2);overflow:hidden;margin-bottom:24px}
+.prog i{display:block;height:100%;width:0;background:var(--brass);transition:width .5s}
+.qstep{display:none;flex-direction:column;gap:18px;flex:1}
+.qstep.on{display:flex;animation:qin .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes qin{from{opacity:0;transform:translateX(24px)}}
+.qstep h3{font-size:24px}
+.qstep small{color:var(--mut)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts button{text-align:left;font:500 15px Onest;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:all .2s}
+.opts button:hover{border-color:var(--brass)}
+.opts button.on{border-color:var(--brass);background:#fbf4e8}
+.qinp{display:grid;gap:10px}
+.qinp input{font:16px Onest;padding:15px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fff;outline:none}
+.qinp input:focus{border-color:var(--brass)}
+.qnav{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:20px}
+.qnav .back{background:none;border:0;font:500 15px Onest;color:var(--mut);cursor:pointer}
+.qdone{text-align:center;gap:14px;justify-content:center}
+.qdone .big{font-size:56px}
+footer{background:#0b1422;color:rgba(255,255,255,.65);padding:48px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer b{color:#fff}
+.demo{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--brass);color:#fff;font-size:12px;padding:9px 14px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.stamp{transform:rotate(-14deg)}}
+@media (max-width:960px){
+ header nav{display:none}.hd{justify-content:space-between}
+ .hero .grid,.debts,.calc,.keep,.qbox{grid-template-columns:1fr}
+ .rgrid,.rk,.terms{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .sheet{width:min(340px,90%);margin-top:20px}
+ .stamp{right:-6px;bottom:130px;width:116px;height:116px;font-size:12px}
+ .logo small{display:none}.phone{font-size:14px}.hd{gap:12px}.logo{font-size:17px}
+ section{padding:76px 0}
+ .opts{grid-template-columns:1fr}
+ .vs b{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header id="hd"><div class="wrap hd">
+ <a class="logo" href="#"><i></i><span>Чистый лист<small>банкротство граждан · Уфа</small></span></a>
+ <nav><a href="#debts">Какие долги</a><a href="#calc">Калькулятор</a><a href="#steps">Как проходит</a><a href="#risks">Гарантии</a><a href="#faq">Вопросы</a></nav>
+ <a class="phone" href="#quiz">+7 (347) 000-00-00</a>
+</div></header>
+
+<section class="hero"><div class="wrap grid">
+ <div>
+  <span class="ey">Банкротство физических лиц · Уфа</span>
+  <h1>Законно спишем долги. <em>Оплата — по этапам</em>, а не вперёд.</h1>
+  <p class="lead">Сначала бесплатно проверим вашу ситуацию и честно скажем, подходит ли вам банкротство. Если нет — предложим другое решение.</p>
+  <p class="law">По Федеральному закону № 127-ФЗ «О несостоятельности (банкротстве)»</p>
+  <div class="acts"><a class="btn gold" href="#quiz">Пройти тест за 1 минуту →</a><a class="btn line" href="#calc">Рассчитать выгоду</a></div>
+  <div class="trust"><div><b data-c="98">0</b><span>% процедур завершаются<br>освобождением от долгов*</span></div><div><b data-c="0">0</b><span>₽ на старте —<br>первый платёж после анализа</span></div><div><b>6–10</b><span>месяцев — обычный<br>срок процедуры</span></div></div>
+ </div>
+ <div class="sheet" aria-hidden="true">
+  <div class="pg b1"></div><div class="pg b2"></div>
+  <div class="pg f">
+   <h4>Ваши долги</h4>
+   <div class="row"><span>Кредит наличными</span><s class="ani" style="animation-delay:.6s">480 000 ₽</s></div>
+   <div class="row"><span>Кредитные карты</span><s class="ani" style="animation-delay:.8s">215 000 ₽</s></div>
+   <div class="row"><span>Микрозаймы</span><s class="ani" style="animation-delay:1s">96 000 ₽</s></div>
+   <div class="row"><span>Пени и штрафы</span><s class="ani" style="animation-delay:1.2s">63 000 ₽</s></div>
+   <div class="total"><span>Останется после<br>процедуры</span><b>0 ₽</b></div>
+  </div>
+  <div class="stamp">Долги<br>списаны</div>
+ </div>
+</div></section>
+
+<section id="debts"><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Честно с первого экрана</span><h2>Что можно списать,<br>а что — нельзя</h2></div><p>Говорим об этом сразу, чтобы вы не потратили время и деньги на процедуру, которая не решит вашу задачу.</p></div>
+ <div class="debts">
+  <div class="dcol ok rv"><h3><i>✓</i>Списываются</h3><ul>
+   <li><div><b>Кредиты и кредитные карты</b><span>Включая просроченные, с пенями и штрафами</span></div></li>
+   <li><div><b>Микрозаймы (МФО)</b><span>Вместе с начисленными процентами</span></div></li>
+   <li><div><b>Долги по ЖКХ</b><span>Квартплата, электричество, газ</span></div></li>
+   <li><div><b>Налоги и штрафы</b><span>Включая транспортный и имущественный налог</span></div></li>
+   <li><div><b>Долги перед людьми и поручительства</b><span>Расписки, займы, обязательства поручителя</span></div></li>
+  </ul></div>
+  <div class="dcol no rv"><h3><i>×</i>Не списываются</h3><ul>
+   <li><div><b>Алименты</b><span>Обязанность сохраняется после процедуры</span></div></li>
+   <li><div><b>Возмещение вреда жизни и здоровью</b><span>И компенсация морального вреда</span></div></li>
+   <li><div><b>Зарплатные долги перед работниками</b><span>Если вы были работодателем или ИП</span></div></li>
+   <li><div><b>Субсидиарная ответственность</b><span>По долгам компании, где вы были директором</span></div></li>
+   <li><div><b>Долги при недобросовестности</b><span>Если суд установит, что долги брали без намерения отдавать</span></div></li>
+  </ul></div>
+ </div>
+</div></section>
+
+<section class="relief"><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Что изменится сразу</span><h2>Спокойствие начинается<br>до решения суда</h2></div><p>Часть давления уходит уже в первые недели после того, как мы берём дело в работу.</p></div>
+ <div class="rgrid">
+  <div class="rc rv"><span class="n">ЗВОНКИ</span><h3>Коллекторы перестают звонить</h3><p>Направляем банкам и коллекторам официальные уведомления об отказе от взаимодействия. Общение — только через нас.</p></div>
+  <div class="rc rv"><span class="n">ПЛАТЕЖИ</span><h3>Не нужно искать деньги на очередной платёж</h3><p>С началом процедуры прекращаются начисления процентов и неустоек, а требования кредиторов идут только через суд.</p></div>
+  <div class="rc rv"><span class="n">ПРИСТАВЫ</span><h3>Списания со счетов прекращаются</h3><p>Исполнительные производства приостанавливаются, аресты снимаются, снимается и ограничение на выезд за границу.</p></div>
+ </div>
+ <p class="note rv">Важно: если ваш официальный доход на уровне прожиточного минимума, а приставы всё равно списывают деньги — это незаконно. Прожиточный минимум на вас и иждивенцев защищён ст. 446 ГПК РФ.</p>
+</div></section>
+
+<section id="calc"><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Калькулятор</span><h2>Платить годами<br>или закрыть вопрос</h2></div><p>Подвиньте ползунки — посчитаем, сколько лет и денег уйдёт на погашение и сколько стоит процедура.</p></div>
+ <div class="calc">
+  <div class="cin rv">
+   <label><span>Общий долг <b id="vD">800 000 ₽</b></span><input type="range" id="iD" min="200000" max="5000000" step="50000" value="800000"></label>
+   <label><span>Сколько можете платить в месяц <b id="vP">25 000 ₽</b></span><input type="range" id="iP" min="5000" max="150000" step="1000" value="25000"></label>
+   <label><span>Средняя ставка по долгам <b id="vR">24 %</b></span><input type="range" id="iR" min="10" max="60" step="1" value="24"></label>
+  </div>
+  <div class="cout rv">
+   <div class="vs">
+    <div><small>Если продолжать платить</small><b id="oY">—</b><small style="margin-top:6px" id="oO">—</small></div>
+    <div class="good"><small>Если пройти банкротство</small><b>6–10 мес.</b><small style="margin-top:6px">стоимость — по договору, в рассрочку</small></div>
+   </div>
+   <div><small style="color:rgba(255,255,255,.65)">Переплата банкам за весь срок</small><div class="bar"><i id="oB" style="width:40%"></i></div></div>
+   <p id="oNote">Расчёт ориентировочный. Точную стоимость процедуры и риски назовём после бесплатного анализа документов.</p>
+   <a class="btn gold" href="#quiz">Получить точный расчёт →</a>
+  </div>
+ </div>
+</div></section>
+
+<section id="steps" style="padding-top:0"><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Как проходит</span><h2>Пять шагов<br>до чистого листа</h2></div><p>Вы видите каждый этап в «Электронном правосудии» и «Госуслугах» — без сюрпризов.</p></div>
+ <div class="steps">
+  <div class="st rv"><h3>Анализ ситуации</h3><p>Бесплатно изучаем долги, доходы, имущество и сделки за 3 года.</p><span class="t">1–2 дня</span></div>
+  <div class="st rv"><h3>Документы</h3><p>Собираем справки и выписки за вас, запросы делаем сами.</p><span class="t">2–4 недели</span></div>
+  <div class="st rv"><h3>Заявление в суд</h3><p>Подаём в Арбитражный суд Республики Башкортостан.</p><span class="t">1–2 месяца</span></div>
+  <div class="st rv"><h3>Процедура</h3><p>Финансовый управляющий ведёт дело, мы — на связи с ним и судом.</p><span class="t">4–6 месяцев</span></div>
+  <div class="st rv"><h3>Освобождение</h3><p>Суд освобождает от долгов. Вы получаете решение на руки.</p><span class="t">итог</span></div>
+ </div>
+ <div class="mfc rv"><b>Долг небольшой?</b><span>В ряде случаев возможно бесплатное внесудебное банкротство через МФЦ. Проверим, подходите ли вы, и поможем подготовить документы.</span></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap keep">
+ <div class="rv"><span class="ey">Что останется с вами</span><h2 style="margin:14px 0 18px">Банкротство —<br>это не «отберут всё»</h2><p style="color:var(--mut);max-width:460px">Закон защищает минимум, необходимый для нормальной жизни. Мы заранее разбираем ваше имущество и говорим, что будет с каждым объектом.</p></div>
+ <div class="klist">
+  <div class="ki rv"><i>⌂</i><div><b>Единственное жильё</b><span>Если оно не в ипотеке — его не забирают</span></div></div>
+  <div class="ki rv"><i>₽</i><div><b>Доход на жизнь</b><span>Ежемесячно — прожиточный минимум на вас и детей</span></div></div>
+  <div class="ki rv"><i>☷</i><div><b>Личные вещи и бытовая техника</b><span>Обычная обстановка дома и вещи первой необходимости</span></div></div>
+  <div class="ki rv"><i>✎</i><div><b>Работа и репутация</b><span>Работодатель не обязан узнавать о процедуре; ограничения — понятные и временные</span></div></div>
+ </div>
+</div></section>
+
+<section class="risks" id="risks"><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Гарантии и риски</span><h2>Почему могут отказать<br>в списании — всего три причины</h2></div><p>Мы проверяем каждую ещё до подачи заявления. Если риск высокий — скажем прямо и не возьмём деньги за процедуру.</p></div>
+ <div class="rk">
+  <div class="rv"><small>Причина 1</small><h3>Недобросовестность</h3><p>Скрытие доходов или имущества, ложные сведения кредиторам и суду.</p></div>
+  <div class="rv"><small>Причина 2</small><h3>Преднамеренное банкротство</h3><p>Если долги набирали, заранее планируя не возвращать их.</p></div>
+  <div class="rv"><small>Причина 3</small><h3>Подозрительные сделки</h3><p>Продажа или дарение имущества родственникам незадолго до процедуры.</p></div>
+ </div>
+ <div class="check rv"><p><b>Финансово-правовая экспертиза до старта.</b> Разбираем ваши сделки и документы и фиксируем в договоре: если результат не будет достигнут по нашей вине — возвращаем оплату.</p><a class="btn gold" href="#quiz">Проверить свою ситуацию</a></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Условия</span><h2>Платите по мере<br>того, как мы работаем</h2></div><p>Никаких крупных сумм вперёд. Стоимость фиксируем в договоре до начала работы.</p></div>
+ <div class="terms">
+  <div class="tm rv"><b>Старт без оплаты</b><p>Анализ ситуации и консультация — бесплатно. Первый платёж — после того, как вы решили идти в процедуру.</p></div>
+  <div class="tm rv"><b>Рассрочка по этапам</b><p>Платёж разбит на месяцы и привязан к этапам: документы, суд, процедура.</p></div>
+  <div class="tm rv"><b>Под ключ</b><p>От сбора справок до решения суда. Вам не нужно ходить в суд и общаться с банками.</p></div>
+  <div class="tm rv"><b>Свой финансовый управляющий</b><p>Работаем с проверенными управляющими — процедура идёт без задержек.</p></div>
+  <div class="tm rv"><b>Скидки</b><p>Для пенсионеров и многодетных семей — особые условия оплаты.</p></div>
+  <div class="tm rv"><b>Прозрачность</b><p>Все документы по делу — в картотеке арбитражных дел, ход процедуры видно онлайн.</p></div>
+ </div>
+ <div class="cases rv"><p><b>Блок «Наши дела»</b> — в рабочей версии здесь номера завершённых дел клиентов (с их согласия) со ссылками на kad.arbitr.ru и реальные отзывы. В демо этот блок показан как образец.</p><span class="btn line" style="color:var(--ink)">kad.arbitr.ru →</span></div>
+</div></section>
+
+<section id="faq" style="padding-top:0"><div class="wrap">
+ <div class="sh rv"><div><span class="ey">Вопросы</span><h2>Частые вопросы</h2></div></div>
+ <div class="faq rv">
+  <details open><summary>Спишут ли долги в итоге — не останусь ли я с долгами и расходами?</summary><p>В подавляющем большинстве дел граждане освобождаются от долгов. Отказ бывает в основном по трём причинам из блока «Гарантии и риски» — мы проверяем их до старта и честно говорим о шансах.</p></details>
+  <details><summary>Что будет с единственной квартирой?</summary><p>Единственное жильё, если оно не в ипотеке, не продают. Если жильё в залоге у банка — разбираем вашу ситуацию отдельно и предлагаем варианты.</p></details>
+  <details><summary>Узнает ли работодатель?</summary><p>Работодатель не обязан узнавать о процедуре. Если вам перечисляют зарплату, финансовый управляющий получает доступ к счёту, но прожиточный минимум остаётся вам.</p></details>
+  <details><summary>Какие ограничения будут после банкротства?</summary><p>5 лет нужно сообщать о банкротстве при оформлении кредитов, 3 года нельзя занимать руководящие должности в компаниях. Жить, работать и путешествовать можно.</p></details>
+  <details><summary>Сколько стоит и можно ли в рассрочку?</summary><p>Стоимость зависит от суммы долга, имущества и количества кредиторов. Фиксируем её в договоре и разбиваем на платежи по этапам.</p></details>
+ </div>
+</div></section>
+
+<section class="quiz" id="quiz"><div class="wrap qbox">
+ <div class="rv"><span class="ey">Бесплатный анализ</span><h2 style="margin:14px 0 18px">Узнайте за 1 минуту,<br>подходит ли вам банкротство</h2><p style="color:rgba(255,255,255,.75);max-width:440px">Ответьте на 4 вопроса — юрист перезвонит, расскажет о рисках, сроках и стоимости именно в вашем случае. Это ни к чему не обязывает.</p></div>
+ <div class="qcard rv" id="qc">
+  <div class="prog"><i id="qp"></i></div>
+  <div class="qstep on" data-s="0"><h3>Какие долги хотите списать?</h3><small>Можно выбрать несколько</small><div class="opts multi"><button>Потребительские кредиты</button><button>Кредитные карты</button><button>Микрозаймы</button><button>ЖКХ</button><button>Налоги</button><button>Долги перед людьми</button></div></div>
+  <div class="qstep" data-s="1"><h3>Общая сумма долга?</h3><div class="opts single"><button>До 300 000 ₽</button><button>300 000 – 500 000 ₽</button><button>500 000 – 1 млн ₽</button><button>Больше 1 млн ₽</button></div></div>
+  <div class="qstep" data-s="2"><h3>Есть ли имущество?</h3><div class="opts single"><button>Только единственное жильё</button><button>Жильё в ипотеке</button><button>Автомобиль</button><button>Нет имущества</button></div></div>
+  <div class="qstep" data-s="3"><h3>Есть ли просрочки сейчас?</h3><div class="opts single"><button>Да, больше 3 месяцев</button><button>Да, недавно</button><button>Пока плачу, но тяжело</button><button>Уже работают приставы</button></div></div>
+  <div class="qstep" data-s="4"><h3>Куда прислать результат?</h3><small>Перезвоним в течение 15 минут в рабочее время</small><div class="qinp"><input placeholder="Имя" id="qn"><input placeholder="Телефон" id="qt" inputmode="tel"></div></div>
+  <div class="qstep qdone" data-s="5"><div class="big">✓</div><h3>Заявка принята</h3><small>В рабочей версии заявка уходит юристу на почту и в CRM.</small></div>
+  <div class="qnav"><button class="back" id="qb">← Назад</button><button class="btn ink" id="qnx">Далее →</button></div>
+ </div>
+</div></section>
+
+<footer><div class="wrap"><div><b>Чистый лист</b> · банкротство граждан<br>Уфа, адрес офиса · +7 (347) 000-00-00</div><div>* По данным судебной статистики, большинство процедур завершаются освобождением от долгов.<br>Демо-лендинг: название, телефон и цифры условные.</div></div></footer>
+<div class="demo">Демо-концепция · бренд условный</div>
+
+<script>
+const hd=document.getElementById('hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((e,i)=>{e.style.transitionDelay=(i%4)*60+'ms';io.observe(e)});
+document.querySelectorAll('[data-c]').forEach(el=>{const n=+el.dataset.c,t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-k,4);el.textContent=Math.round(n*e);if(k<1)requestAnimationFrame(f)})(t0)});
+/* calculator */
+const fm=n=>Math.round(n).toLocaleString('ru-RU')+' ₽';
+function calc(){const D=+iD.value,P=+iP.value,R=+iR.value/1200;vD.textContent=fm(D);vP.textContent=fm(P);vR.textContent=iR.value+' %';
+ let bal=D,m=0,paid=0;while(bal>0&&m<600){bal=bal*(1+R)-P;paid+=P;m++;if(bal<0)paid+=bal;}
+ if(m>=600||P<=D*R){oY.textContent='никогда';oO.textContent='платёж не покрывает даже проценты';oB.style.width='100%';return}
+ const y=Math.floor(m/12),mm=m%12;oY.textContent=(y?y+' г. ':'')+(mm?mm+' мес.':'');oO.textContent='переплата '+fm(paid-D);oB.style.width=Math.min(100,(paid-D)/D*100)+'%';}
+[iD,iP,iR].forEach(i=>i.addEventListener('input',calc));calc();
+/* quiz */
+let s=0;const st=[...document.querySelectorAll('.qstep')],N=st.length-1;
+function go(n){s=Math.max(0,Math.min(N,n));st.forEach((e,i)=>e.classList.toggle('on',i===s));qp.style.width=(s/N*100)+'%';qb.style.visibility=s>0&&s<N?'visible':'hidden';qnx.style.display=s<N?'':'none';qnx.textContent=s===N-1?'Получить расчёт':'Далее →'}
+document.querySelectorAll('.opts.multi button').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
+document.querySelectorAll('.opts.single button').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));setTimeout(()=>go(s+1),250)});
+qnx.onclick=()=>{if(s===N-1&&(!qn.value.trim()||qt.value.replace(/\D/g,'').length<10)){(qn.value.trim()?qt:qn).focus();return}go(s+1)};qb.onclick=()=>go(s-1);go(0);
+</script>
+</body>
+</html>
